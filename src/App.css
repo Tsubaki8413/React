@@ -4,7 +4,19 @@
   font-family: sans-serif;
 }
 
-.buttons {
+.display {
+  margin: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+label{
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.button {
   margin: 1rem;
 }
 
@@ -12,11 +24,4 @@ button {
   margin: 0.5rem;
   padding: 0.5rem 1rem;
   font-size: 1.2rem;
-}
-
-@media (max-width: 600px) {
-  button {
-    font-size: 1rem;
-    padding: 0.4rem 0.8rem;
-  }
 }
