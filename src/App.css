@@ -1,27 +1,27 @@
 .app {
   text-align: center;
-  padding: 2rem;
+  margin-top: 50px;
   font-family: sans-serif;
 }
 
-.display {
-  margin: 1rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.input-area {
+  margin-bottom: 20px;
 }
 
-label{
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.button {
-  margin: 1rem;
+.inout-area input {
+  padding: 8px;
+  width: 200px;
 }
 
 button {
-  margin: 0.5rem;
-  padding: 0.5rem 1rem;
-  font-size: 1.2rem;
+  margin-left: 8px;
+}
+
+.task-list {
+  list-style: none;
+  padding: 0;
+}
+
+.task-list li {
+  margin: 10px 0;
 }

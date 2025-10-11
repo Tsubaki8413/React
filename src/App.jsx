@@ -2,37 +2,67 @@ import React, { useState, useEffect } from 'react';
 import './App.css';
 
 function App() {
-  const [count, setCount] = useState(
-    Number(localStorage.getItem("count")) || 0
-  );
+  const [task, setTask] = useState('');
+  const [tasks, setTasks] = useState([]);
 
   useEffect(() => {
-    localStorage.setItem("count", (count));
-  }, [count]);
+    const savedTasks = localStorage.getItem('tasks');
+    if (savedTasks) {
+      setTasks(JSON.parse(savedTasks));
+    }
+  }, []);
 
-  const decrement = () => setCount(prev => prev - 1);
-  const increment = () => setCount(prev => prev + 1);
-  const reset = () => setCount(0);
+  useEffect(() => {
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }, [tasks]);
+
+  const AddTodo = () => {
+    if (task.trim() !== '') {
+      const newTask = { text: task, completed: false };
+      setTasks([...tasks, newTask]);
+      setTask('');
+    }
+  };
+
+  const DeleteTodo = (index) => {
+    const newTasks = tasks.filter((_, i) => i !== index);
+    setTasks(newTasks);
+  };
+
+  const CheckBox = (index) => {
+    const newTasks = tasks.map((t, i) =>
+      i === index ? { ...t, completed: !t.completed } : t
+    );
+    setTasks(newTasks);
+  };
 
   return (
     <div className="app">
-      <h1>カウンターアプリ</h1>
+      <h1>ToDoアプリ</h1>
 
-      <div className="display">
-        <label>現在のカウント：</label>
+      <div className="input-area">
         <input
           type="text"
-          value={count}
-          onChange={(e) => setCount(Number(e.target.value))}
+          value={task}
+          onChange={(e) => setTask(e.target.value)}
+          placeholder="タスクを入力"
         />
-      </div>
-
-      <div className="button">
-        <button onClick={decrement}>-1</button>
-        <button onClick={increment}>+1</button>
+        <button onClick={AddTodo}>追加</button>
       </div>
       
-      <button onClick={reset}>リセット</button>
+      <ul className="task-list">
+        {tasks.map((t, index) => (
+          <li key={index} style={{ textDecoration: t.completed ? 'line-through' : 'none' }}>
+            <input
+              type="checkbox"
+              checked={t.completed}
+              onChange={() => CheckBox(index)}
+            />
+            {t.text}
+            <button onClick={() => DeleteTodo(index)}>削除</button>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 }
