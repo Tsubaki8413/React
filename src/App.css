@@ -1,4 +1,3 @@
-/* 1. リセットと基本設定 */
 * {
   margin: 0;
   padding: 0;
@@ -7,7 +6,7 @@
 
 html, body {
   width: 100%;
-  overflow-x: hidden; /* 横揺れ防止 */
+  overflow-x: hidden;
   font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
   color: #333;
   line-height: 1.6;
@@ -19,7 +18,6 @@ html, body {
   min-height: 100vh;
 }
 
-/* 2. レイアウト（背景100%・中身中央） */
 header, footer {
   width: 100%;
   background-color: #333;
@@ -32,15 +30,13 @@ main {
   width: 100%;
 }
 
-/* 共通の「中身を中央に寄せる」クラス */
 .inner {
   width: 100%;
-  max-width: 1000px; /* PCでの最大幅 */
+  max-width: 1000px;
   margin: 0 auto;
   padding: 40px 20px;
 }
 
-/* 3. ヘッダーのデザイン */
 header .inner {
   display: flex;
   justify-content: space-between;
@@ -69,10 +65,8 @@ header a:hover {
   opacity: 0.7;
 }
 
-/* 4. 実績一覧（Works）のグリッド設定 */
 .works-grid {
   display: grid;
-  /* 1列300pxを基本に、画面幅に合わせて自動で列数を変える */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 30px;
   margin-top: 30px;
@@ -112,14 +106,13 @@ header a:hover {
   color: #666;
 }
 
-/* 5. レスポンシブ対応（スマホ用設定） */
 @media (max-width: 640px) {
   .inner {
     padding: 30px 15px;
   }
 
   header .inner {
-    flex-direction: column; /* スマホではロゴとメニューを縦に並べる */
+    flex-direction: column;
     gap: 15px;
   }
 
@@ -128,7 +121,7 @@ header a:hover {
   }
 
   .works-grid {
-    grid-template-columns: 1fr; /* スマホでは必ず1列にする */
+    grid-template-columns: 1fr;
     gap: 20px;
   }
 
