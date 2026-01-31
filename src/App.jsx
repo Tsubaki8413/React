@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="app">
-      <h1>ToDoアプリ</h1>
+      <h1>ToDoApp</h1>
 
       <div className="input-area">
         <input
